@@ -1,0 +1,15 @@
+<div>
+    <% messages.forEach((message)=> { %>
+        <h2>
+            User: <%= message.user %>
+        </h2>
+        <ul>
+            <li>
+                Text: <%= message.text %>
+            </li>
+            <li>
+                Added: <%= message.added %>
+            </li>
+        </ul>
+        <% }); %>
+</div>
