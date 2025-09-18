@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { indexRouter } from "./routes/indexRouter.js";
-import { newMessageRouter } from "./routes/newMessageRouter.js";
+import { formRouter } from "./routes/formRouter.js";
 
 const app = express();
 
@@ -13,8 +13,10 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/new", formRouter);
 app.use("/", indexRouter);
-app.use("/new", newMessageRouter);
 
 app.use((err, req, res, next) => {
     console.error(err);
