@@ -7,16 +7,16 @@
 </head>
 
 <body>
+    <%- include("nav") %>
+        <h1>
+            <%= title %>
+        </h1>
 
-    <h1>
-        <%= title %>
-    </h1>
+        <button type="button">
+            <a href="/new">Add Message</a>
+        </button>
 
-    <button type="button">
-        <a href="/new">Add Message</a>
-    </button>
-
-    <%- include("message", { messages: messages }) %>
+        <%- include("messages", { messages: messages }) %>
 
 </body>
 

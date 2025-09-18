@@ -1,0 +1,10 @@
+<div>
+    <% messages.forEach((message, index)=> { %>
+        <div>
+            <%- include("message", { message: message, index: index }) %>
+                <button type="button">
+                    <a href="/messages/<%= index%>">Open</a>
+                </button>
+        </div>
+        <% }); %>
+</div>

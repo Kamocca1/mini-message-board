@@ -6,21 +6,22 @@
 </head>
 
 <body>
-    <h1>
-        Message Form
-    </h1>
+    <%- include("nav") %>
+        <h1>
+            Message Form
+        </h1>
 
-    <form method="POST" action="/new">
-        <label for="author">
-            Author
-            <input id="author" type="text" name="author">
-        </label>
-        <label for="message">
-            Message
-            <input id="message" type="text" name="message">
-        </label>
-        <button type="submit">Submit</button>
-    </form>
+        <form method="POST" action="/new">
+            <label for="author">
+                Author
+                <input id="author" type="text" name="author">
+            </label>
+            <label for="message">
+                Message
+                <input id="message" type="text" name="message">
+            </label>
+            <button type="submit">Submit</button>
+        </form>
 </body>
 
 </html>

@@ -15,6 +15,13 @@ const messages = [
     },
 ];
 
+indexRouter.get("/messages/:index", (req, res) => {
+    const index = Number(req.params.index);
+    const message = messages[index];
+    if (!message) return res.status(404).send("Not found");
+    res.render("viewMessage", { message });
+});
+
 indexRouter.get("/", (req, res) => {
     res.render("index", { title: "Mini Message Board", messages: messages });
 });
