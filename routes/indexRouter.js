@@ -1,29 +1,36 @@
 import { Router } from "express";
+import { getAllMessages, getMessageById } from "../db/queries.js";
 
 const indexRouter = Router();
 
-const messages = [
-    {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-    },
-    {
-        text: "Hello World!",
-        user: "Charles",
-        added: new Date(),
-    },
-];
+indexRouter.get("/messages/:id", async (req, res, next) => {
+    try {
+        const messageId = Number(req.params.id);
+        if (isNaN(messageId)) {
+            return res.status(400).send("Invalid message ID");
+        }
 
-indexRouter.get("/messages/:index", (req, res) => {
-    const index = Number(req.params.index);
-    const message = messages[index];
-    if (!message) return res.status(404).send("Not found");
-    res.render("viewMessage", { message });
+        const message = await getMessageById(messageId);
+        if (!message) {
+            return res.status(404).send("Message not found");
+        }
+
+        res.render("viewMessage", { message });
+    } catch (error) {
+        next(error);
+    }
 });
 
-indexRouter.get("/", (req, res) => {
-    res.render("index", { title: "Mini Message Board", messages: messages });
+indexRouter.get("/", async (req, res, next) => {
+    try {
+        const messages = await getAllMessages();
+        res.render("index", {
+            title: "Mini Message Board",
+            messages: messages,
+        });
+    } catch (error) {
+        next(error);
+    }
 });
 
-export { indexRouter, messages };
+export { indexRouter };

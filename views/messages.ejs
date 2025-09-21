@@ -1,10 +1,10 @@
-<div>
-    <% messages.forEach((message, index)=> { %>
-        <div>
-            <%- include("message", { message: message, index: index }) %>
+<% messages.forEach((message, index)=> { %>
+    <div class="message-card">
+        <%- include("message", { message: message, index: index }) %>
+            <div class="text-center mt-2">
                 <button type="button">
-                    <a href="/messages/<%= index%>">Open</a>
+                    <a href="/messages/<%= message.id %>">Open</a>
                 </button>
-        </div>
-        <% }); %>
-</div>
+            </div>
+    </div>
+    <% }); %>

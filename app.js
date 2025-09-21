@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/new", formRouter);
@@ -23,7 +24,7 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode || 500).send(err.message);
 });
 
-const PORT = 3000;
+const PORT = 8000;
 app.listen(PORT, (error) => {
     if (error) {
         throw error;

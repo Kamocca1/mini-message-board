@@ -8,15 +8,15 @@
 
 <body>
     <%- include("nav") %>
-        <h1>
-            <%= title %>
-        </h1>
+        <div class="container">
+            <h1>
+                <%= title %>
+            </h1>
 
-        <button type="button">
-            <a href="/new">Add Message</a>
-        </button>
-
-        <%- include("messages", { messages: messages }) %>
+            <div class="messages-container">
+                <%- include("messages", { messages: messages }) %>
+            </div>
+        </div>
 
 </body>
 

@@ -6,19 +6,24 @@
 </head>
 
 <body>
-
     <%- include("nav") %>
-        <h2>
-            User: <%= message.user %>
-        </h2>
-        <ul>
-            <li>
-                Text: <%= message.text %>
-            </li>
-            <li>
-                Added: <%= message.added %>
-            </li>
-        </ul>
+        <div class="container">
+            <div class="message-detail">
+                <h2>
+                    User: <%= message.user %>
+                </h2>
+                <ul>
+                    <li>
+                        <span class="label">Text:</span>
+                        <%= message.text %>
+                    </li>
+                    <li>
+                        <span class="label">Added:</span>
+                        <%= message.added %>
+                    </li>
+                </ul>
+            </div>
+        </div>
 </body>
 
 </html>
