@@ -24,7 +24,7 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode || 500).send(err.message);
 });
 
-const PORT = 8000;
+const PORT = 3000;
 app.listen(PORT, (error) => {
     if (error) {
         throw error;
